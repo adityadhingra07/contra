@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String     @id @default(uuid())
+  email             String     @unique
+  passwordHash      String
+  userAuthToken     String     @unique
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  isCompleteProfile Boolean    @default(false)
+  Profile           Profile?
+  Contract          Contract[]
+}
+
+model Profile {
+  id                       Int          @id @default(autoincrement())
+  userId                   String       @unique
+  user                     User         @relation(fields: [userId], references: [id])
+  pbmName                  String?
+  parentCompany            String?
+  yearFounded              Int?
+  headquartersLocation     String?
+  marketShare              Int?
+  numberOfCoveredLives     Int?
+  contractTypesTraditional Boolean      @default(false)
+  contractTypesPrebate     Boolean      @default(false)
+  MedPrograms              MedPrograms?
+  DataSharing              DataSharing?
+}
+
+model MedPrograms {
+  id                 Int     @id @default(autoincrement())
+  medSync            String?
+  mtm                String?
+  automatedRefill    String?
+  digitalHealth      String?
+  patientEducation   String?
+  incentivePrograms  String?
+  homeDelivery       String?
+  clinicalPharmacist String?
+  adherencePackaging String?
+  healthCoaching     String?
+  behavioralHealth   String?
+  pharmacyLoyalty    String?
+
+  // Relation to Profile
+  profileId Int     @unique
+  profile   Profile @relation(fields: [profileId], references: [id])
+}
+
+model DataSharing {
+  id                     Int      @id @default(autoincrement())
+  completeClaimFile      Boolean?
+  limitedDistribution    Boolean?
+  specialtyDrugList      Boolean?
+  detailedFormulary      Boolean?
+  carrierTPAConnectivity Boolean?
+
+  // Relation to Profile
+  profileId Int     @unique
+  profile   Profile @relation(fields: [profileId], references: [id])
+}
+
+model Contract {
+  id        String   @id @unique @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  url       String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+}
