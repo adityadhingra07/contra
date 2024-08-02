@@ -31,10 +31,11 @@ const register: Action = async ({ request }) => {
 		}
 
 		await createUser(email, password);
-		return redirect(302, '/login');
 	} catch (error) {
 		console.error('Error during user registration:', error);
 		return fail(500, { error: 'Internal server error' });
+	} finally {
+		redirect(302, '/login');
 	}
 };
 
