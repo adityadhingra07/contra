@@ -1,28 +1,26 @@
-# create-svelte
+# contra (Svelte Webapp)
+This is built using SvelteKit, AWS, Prisma(ORM), and Flowbite (UI Library).
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+As a user you can:
+- Create an account
+- Login with an existing account
+- Create/update your profile
+- Create a new contract which is saved in a S3 bucket
 
-## Creating a project
+I have used **Prisma** as the ORM to interact with the database. For now, it uses a local SQLite database but can be easily changed to a different database (AWS hosted PostgresSQL, etc.)
+The schema for the database is in the `prisma/schema.prisma` file.
 
-If you're seeing this, you've probably already done this step. Congrats!
+The contracts are saved in a S3 bucket. The bucket name and region are defined in the `.env` file. The contracts are saved in the `contracts` folder in the bucket.
 
+**_(For testing only)_** I am pushing `.env` file with my credentials.
+
+## Running the Project
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
+pnpm install
+pnpm run dev
 
 # or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm run dev -- --open
 ```
 
 ## Building
@@ -30,9 +28,9 @@ npm run dev -- --open
 To create a production version of your app:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Things TODO:
+- [ ] Protect unauthorized access to different routes. Svelte offers protected routes.
+- [ ] Input validation for the forms. I created this to showcase svelte and prisma.
