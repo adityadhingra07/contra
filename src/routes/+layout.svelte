@@ -5,7 +5,7 @@
 </script>
 
 <Navbar class="w-full border-b px-2 py-2.5 sm:px-4">
-	<NavBrand href="/dashboard">
+	<NavBrand href="/login">
 		<div class="text-xl"><Span gradient class="font-semibold">con</Span>tra</div>
 	</NavBrand>
 	<NavUl>

@@ -1,6 +1,6 @@
 <!-- register.svelte -->
 <script lang="ts">
-	import { Button, Card, Heading, Input, Label, Span } from 'flowbite-svelte';
+	import { A, Button, Card, Heading, Input, Label, Span } from 'flowbite-svelte';
 	import { EyeOutline, EyeSlashOutline } from 'flowbite-svelte-icons';
 	import type { ActionData } from './$types';
 
@@ -43,7 +43,7 @@
 			</Label>
 			<Button type="submit" class="w-full">Create new account</Button>
 			<div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-				Already a user? <a href="/login">Login into your account</a>
+				Already a user? <A href="/login">Login into your account</A>
 			</div>
 			{#if form?.user}
 				<p class="error">Email is taken.</p>

@@ -1,6 +1,6 @@
 import type { Action, Actions, PageServerLoad } from './$types';
 import { db } from '$lib/database';
-import { medAdhProgQuestions, dataSharingQuestions } from './questions';
+import { dataSharingQuestions, medAdhProgQuestions } from './questions';
 import { redirect } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ locals }) => {

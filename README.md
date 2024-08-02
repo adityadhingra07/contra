@@ -17,8 +17,10 @@ The contracts are saved in a S3 bucket. The bucket name and region are defined i
 **_(For testing only)_** I am pushing `.env` file with my credentials.
 
 ## Setting up local DB
+
 We will use a local SQLite database for this project. You can change the database to a different one by changing the connection string in the `DATABASE_URL` environment variable.
 This will create a `dev.db` file in the `prisma` folder.
+
 ```bash
 pnpm install
 npx prisma generate

@@ -7,7 +7,7 @@ import { db } from '$lib/database';
 export const load: PageServerLoad = async (session) => {
 	const sessionData = session.cookies.get('session');
 	if (sessionData) {
-		return redirect(303, '/');
+		return redirect(303, '/dashboard');
 	}
 	return {};
 };
