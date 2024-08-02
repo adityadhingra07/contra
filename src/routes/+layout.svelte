@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
 	import { page } from '$app/stores';
-	import { A, Navbar, NavBrand, NavLi, NavUl, Span } from 'flowbite-svelte';
+	import { Navbar, NavBrand, NavLi, NavUl, Span } from 'flowbite-svelte';
 </script>
 
 <Navbar class="w-full border-b px-2 py-2.5 sm:px-4">
